@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "dev_user",
+    "password": "Kappa2304",
+    "database": "book_store",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "dev_user",
+    "password": "Kappa2304",
+    "database": "book_store",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "dev_user",
+    "password": "Kappa2304",
+    "database": "book_store",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
