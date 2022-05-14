@@ -1,0 +1,227 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is documentation of todo api.",
+    "version": "1.0.0",
+    "title": "Swagger Todo API",
+    "contact": {
+      "email": "m.iqbal@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "tags": [
+    {
+      "name": "todo",
+      "description": "Everything about todo api"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/todo": {
+      "get": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Get all todo list",
+        "description": "Get all todo list",
+        "operationId": "getTodo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Create new todo item",
+        "description": "",
+        "operationId": "addTodo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "order placed for purchasing the pet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TodoParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          },
+          "400": {
+            "description": "Invalid Todo Item"
+          }
+        }
+      }
+    },
+    "/todo/{id}": {
+      "put": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Updated todo item",
+        "description": "",
+        "operationId": "updateTodo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id todo item that need to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TodoParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful to update todo"
+          },
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "404": {
+            "description": "Id not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "todo"
+        ],
+        "summary": "Delete todo item",
+        "description": "",
+        "operationId": "deleteTodo",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id todo item that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied"
+          },
+          "404": {
+            "description": "Item not found"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Todo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "isDone": {
+          "type": "boolean"
+        },
+        "user": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "xml": {
+        "name": "Todo"
+      }
+    },
+    "TodoParam": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "isDone": {
+          "type": "boolean"
+        },
+        "user": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "TodoParam"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
